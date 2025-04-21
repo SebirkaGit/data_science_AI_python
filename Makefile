@@ -1,17 +1,17 @@
 install:
-    pip install --upgrade pip &&\
-        pip install -r requirements.txt
+	pip install --upgrade pip &&\
+		pip install -r requirements.txt
 
 test: 
-    python -m pytest -vv test_hello.py
+	python -m pytest -vv test_hello.py
 
 format:
-    black *.py
+	black *.py
 
 lint:
-    pylint --disable=R,C hello.py
+	pylint --disable=R,C hello.py
 
 all: install lint test
 
 clean:
-    rm -rf __pycache__ *.pyc *.pyo .pytest_cache
+	rm -rf __pycache__ *.pyc *.pyo .pytest_cache

@@ -4,7 +4,7 @@ import re
 print(sys.version)
 
 
-print('Hello, World!')
+print("Hello, World!")
 
 s1 = "The BodyGuard 1 is the best album"
 
@@ -48,7 +48,7 @@ print("{:<10}".format("John"))  # Left-align
 print("{:>10}".format("John"))  # Right-align
 print("{:^10}".format("John"))  # Center-align
 print("{:.2f}".format(3.14159))  # Limit to 2 decimal places
-print("{:06}".format(42))        # Pad with zeros to make it 6 digits
+print("{:06}".format(42))  # Pad with zeros to make it 6 digits
 
 name1 = "Johnathan"
 age1 = 30
