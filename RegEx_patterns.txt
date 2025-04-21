@@ -1,0 +1,68 @@
+Special      Sequence                           	Meaning	Example
+\d	    Matches any digit character (0-9)       	"123" matches "\d\d\d"
+\D	    Matches any non-digit character         	"hello" matches "\D\D\D\D\D"
+\w	    Matches any word character(a-z, A-Z, 0-9, and _)	"hello_world" matches "\w\w\w\w\w\w\w\w\w\w\w"
+\W	    Matches any non-word character	            "@#$%" matches "\W\W\W\W"
+\s	    Matches any whitespace character (space, tab, newline, etc.)	"hello world" matches "\w\w\w\w\w\s\w\w\w\w\w"
+\S	    Matches any non-whitespace character	    "hello_world" matches "\S\S\S\S\S\S\S\S\S"
+\b	    Matches the boundary between a word character and a non-word character	"cat" matches "\bcat\b" in "The cat sat on the mat"
+\B	    Matches any position that is not a word boundary	"cat" matches "\Bcat\B" in "category" but not in "The cat sat on the mat"
+
+
+# Common Regular Expression (RegEx) Patterns
+
+# Match an email address
+# ^        - Start of the string
+# [a-zA-Z0-9._%+-]+ - Match one or more alphanumeric characters or special characters (._%+-)
+# @        - Match the "@" symbol
+# [a-zA-Z0-9.-]+ - Match one or more alphanumeric characters, dots, or hyphens
+# \.       - Match a literal dot
+# [a-zA-Z]{2,} - Match at least two alphabetic characters (domain suffix)
+# $        - End of the string
+^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+
+# Match a URL
+# ^        - Start of the string
+# (https?:\/\/)? - Match "http://" or "https://" (optional)
+# (www\.)? - Match "www." (optional)
+# [a-zA-Z0-9.-]+ - Match one or more alphanumeric characters, dots, or hyphens
+# \.       - Match a literal dot
+# [a-zA-Z]{2,} - Match at least two alphabetic characters (domain suffix)
+# \/?.*    - Match an optional "/" followed by zero or more characters
+# $        - End of the string
+^(https?:\/\/)?(www\.)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\/?.*$
+
+# Match a phone number (US format)
+# ^        - Start of the string
+# \(?\d{3}\)? - Match an optional opening parenthesis, three digits, and an optional closing parenthesis
+# [-.\s]?  - Match an optional hyphen, dot, or space
+# \d{3}    - Match exactly three digits
+# [-.\s]?  - Match an optional hyphen, dot, or space
+# \d{4}    - Match exactly four digits
+# $        - End of the string
+^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$
+
+# Match a date (MM/DD/YYYY format)
+# ^        - Start of the string
+# (0[1-9]|1[0-2]) - Match months 01-09 or 10-12
+# \/       - Match a literal "/"
+# (0[1-9]|[12][0-9]|3[01]) - Match days 01-09, 10-29, or 30-31
+# \/       - Match a literal "/"
+# \d{4}    - Match exactly four digits (year)
+# $        - End of the string
+^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$
+
+# Match a time (HH:MM 24-hour format)
+# ^        - Start of the string
+# ([01]\d|2[0-3]) - Match hours 00-19 or 20-23
+# :        - Match a literal ":"
+# ([0-5]\d) - Match minutes 00-59
+# $        - End of the string
+^([01]\d|2[0-3]):([0-5]\d)$
+
+# Match a postal code (US ZIP code)
+# ^        - Start of the string
+# \d{5}    - Match exactly five digits
+# (-\d{4})? - Match an optional hyphen followed by exactly four digits
+# $        - End of the string
+^\d{5}(-\d{4})?$
