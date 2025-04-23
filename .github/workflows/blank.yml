@@ -1,4 +1,4 @@
-name: YouTube Videos
+name: Checking Github Action
 
 on:
   schedule:
