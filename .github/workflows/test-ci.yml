@@ -1,25 +1,38 @@
 name: CI
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-  schedule:
-    # Runs every day at noon
-    - cron: '0 12 * * *'
-  workflow_dispatch:
+on: [push]
+    
+  #   branches: [ main ]
+  # pull_request:
+  #   branches: [ main ]
+  # schedule:
+  #   # Runs every day at noon
+  #   - cron: '0 12 * * *'
+  # workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Set up python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+
       - name: Run a one-line script
         run: echo Hello, world!
-      - name: Run a multi-lines script
+      - name: install dependencies
         run: |
-          echo Hello, world! you can Add another action to build
-          echo Test, world! you can Add another Test to build
+          make install
+      - name: pylint
+        run: |
+          make lint
+      - name: Test with pytest
+        run: |
+          make install
+      - name: Format code
+        run: |
+          make format
         
       
